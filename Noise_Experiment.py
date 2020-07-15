@@ -37,7 +37,7 @@ def make_prediction (audio_path):
     with sr.AudioFile(audio_path) as source:
         audio = r.record(source)
     try:
-        pred = r.recognize_ibm(audio, username = '3059e1fd-bac3-42f0-8d3e-ac826a71842c', password = '71c5bca4f41043a187c1b79f91fc2cf7')
+        pred = r.recognize_google(audio, username = '3059e1fd-bac3-42f0-8d3e-ac826a71842c', password = '71c5bca4f41043a187c1b79f91fc2cf7') #r.recognize_sphinx or r.recognize_wit for other models 
 
         return pred
     except sr.UnknownValueError:
@@ -235,5 +235,5 @@ for dir in lowest_dirs:
         print('Processed', str(count/10)+'%')
     if count == 1000:
         break
-df.to_csv('houndify_speech_results.csv')
+df.to_csv('google_speech_results.csv')
 
